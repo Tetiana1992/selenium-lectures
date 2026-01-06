@@ -35,7 +35,6 @@ public class SeleniumUtils {
     }
 
     public static void switchToWindowByTitle(WebDriver driver, String title) {
-
         for (String windowHandle : driver.getWindowHandles()) {
             driver.switchTo().window(windowHandle);
             if (driver.getTitle().equals(title)) {
@@ -47,8 +46,16 @@ public class SeleniumUtils {
 
     }
     public static void jsClick(WebDriver driver, WebElement elementToClick){
-
         ((JavascriptExecutor)driver).executeScript("arguments[0].click();", elementToClick );
+
+    }
+    public static void scrollToWebElement(WebDriver driver, WebElement elementToScroll){
+        ((JavascriptExecutor)driver).executeScript("window.scroll(0,"+elementToScroll.getLocation().getY()+")");
+
+    }
+
+    public static void scrollToBy(WebDriver driver, int x, int y){
+        ((JavascriptExecutor)driver).executeScript("window.scrollBy("+x+","+y+")");
 
     }
 }
