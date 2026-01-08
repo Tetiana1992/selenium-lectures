@@ -1,5 +1,6 @@
 package day6;
 
+import day3.SeleniumUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -21,8 +22,11 @@ public class ActionsDemo {
 
 
         WebElement searchBar = driver.findElement(By.id("typeaheadInput"));
+        SeleniumUtils.scrollToBy(driver,0, 500);
+        Thread.sleep(2000);
 
         Actions actions = new Actions(driver);
         actions.keyDown(Keys.SHIFT).sendKeys(searchBar, "sdet").keyUp(Keys.SHIFT).sendKeys(searchBar, " qa").build().perform();
+        actions.keyDown(Keys.LEFT_SHIFT).click(driver.findElement(By.linkText("Project Manager"))).perform();
     }
 }
